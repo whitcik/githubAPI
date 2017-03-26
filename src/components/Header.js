@@ -8,7 +8,10 @@ export default class Header extends Component {
     if(!clicked) {
       return false;
     }
-    return clicked.path === current.pathname;
+    if(clicked.path.length === 1){
+      return clicked.path === current.pathname;
+    }
+    return current.pathname.indexOf(clicked.path) === 0;
   }
 
   render() {
