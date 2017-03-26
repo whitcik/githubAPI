@@ -1,0 +1,7 @@
+.users-list {
+  width: 50%;
+}
+.users-list .list-group {
+  height: calc(100% - 41px);
+  overflow: auto;
+}

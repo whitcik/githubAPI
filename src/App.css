@@ -13,3 +13,6 @@ body {
 .page-content-wrapper{
   height: calc(100% - 52px - 30px); /* 52px - header, 30px - footer */
 }
+.padd-10-5{
+  padding: 10px 5px;
+}
