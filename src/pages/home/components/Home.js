@@ -5,7 +5,10 @@ import {getUsers} from 'actions/home/usersActions';
 
 class Home extends PureComponent {
   componentDidMount() {
-    this.props.actions.getUsers();
+    
+    if(this.props.users.length === 0){
+      this.props.actions.getUsers();
+    }
   }
   
   render() {
