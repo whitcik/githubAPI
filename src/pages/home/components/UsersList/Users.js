@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Panel, ListGroup } from 'react-bootstrap';
+import { selectUser } from 'actions/home/usersActions';
 import User from './User';
 import '../../Home.css'
 
@@ -12,7 +14,10 @@ class Users extends PureComponent {
     
     return _.map(
       users,
-      user => <User key={user.id} {...user} />
+      user => <User
+                selectUser={this.props.actions.selectUser}
+                key={user.id}
+                {...user} />
     );
   }
 
@@ -35,4 +40,10 @@ function mapStateToProps(state, props) {
     };
 }
 
-export default connect(mapStateToProps)(Users);
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators({ selectUser }, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

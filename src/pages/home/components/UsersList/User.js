@@ -3,7 +3,7 @@ import { ListGroupItem } from 'react-bootstrap';
 
 const User = (props) => {
   return (
-    <ListGroupItem>
+    <ListGroupItem onClick={() => props.selectUser(props.id)}>
       {props.login}
     </ListGroupItem>
   );

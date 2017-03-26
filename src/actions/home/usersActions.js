@@ -12,3 +12,10 @@ export const getUsers = () => {
       type: actions.GET_USERS_FROM_API,
   };
 }
+
+export const selectUser = (id) => {
+  return {
+      type: actions.SELECT_USER,
+      id
+  };
+}
