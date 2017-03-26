@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { Panel, ListGroup } from 'react-bootstrap';
 import { selectUser } from 'actions/home/usersActions';
 import User from './User';
-import '../../Home.css'
 
 class Users extends PureComponent {
   
@@ -22,8 +21,9 @@ class Users extends PureComponent {
   }
 
   render() {
+    console.log('Users');
     return (
-      <div className="users-list well well-sm height-100p">
+      <div className="users-list well well-sm height-100p pull-left">
         <Panel header="User List" className="height-100p">
           <ListGroup fill>
             {this.generateUsers()}

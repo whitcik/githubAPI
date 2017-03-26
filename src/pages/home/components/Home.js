@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getUsers } from 'actions/home/usersActions';
 import Users from './UsersList/Users';
+import UsersDetails from './UserDetails/UserDetails';
+import '../Home.css';
 
 class Home extends PureComponent {
   componentDidMount() {
@@ -20,6 +22,7 @@ class Home extends PureComponent {
           <div className="col-xs-12 height-100p">
             <div className="padd-10-5 height-100p">
               <Users />
+              {this.props.shouldShowUserDetails && <UsersDetails />}
             </div>
           </div>
         </div>
@@ -30,7 +33,8 @@ class Home extends PureComponent {
 
 function mapStateToProps(state, props) {
     return {
-        shouldGetUsers: !state.users.length
+        shouldGetUsers: !state.users.length,
+        shouldShowUserDetails: state.selected.userId !== null
     };
 }
 function mapDispatchToProps(dispatch) {
