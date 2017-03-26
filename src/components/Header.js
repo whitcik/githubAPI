@@ -13,7 +13,7 @@ export default class Header extends Component {
 
   render() {
     console.log('Headerss', this.props);
-    const { HOME, ABOUT } = routePaths;
+    const { HOME, ABOUT, USERS } = routePaths;
     return (
       <header className="container">
         <nav className="navbar navbar-inverse">
@@ -26,6 +26,9 @@ export default class Header extends Component {
               <ul className="nav navbar-nav">
                 <li>
                   <NavLink to={HOME} isActive={this.isActive}>Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to={USERS} isActive={this.isActive}>Users</NavLink>
                 </li>
                 <li>
                   <NavLink to={ABOUT} isActive={this.isActive}>About</NavLink>

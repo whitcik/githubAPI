@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getUsers } from 'actions/home/usersActions';
-import Users from './UsersList/Users';
+import { getUsers } from 'actions/users/usersActions';
+import UsersList from './UsersList/UsersList';
 import UsersDetails from './UserDetails/UserDetails';
-import '../Home.css';
+import { Route } from 'react-router-dom';
+import routePaths from 'constans/routePaths';
+import '../Users.css';
 
-class Home extends PureComponent {
+class Users extends PureComponent {
   componentDidMount() {
     
     if(this.props.shouldGetUsers){
@@ -15,14 +17,14 @@ class Home extends PureComponent {
   }
   
   render() {
-    console.log('Home', this.props);
+    console.log('Users', this.props);
     return (
       <section className='container page-content-wrapper'>
         <div className="row height-100p">
           <div className="col-xs-12 height-100p">
             <div className="padd-10-5 height-100p">
-              <Users />
-              {this.props.shouldShowUserDetails && <UsersDetails />}
+              <UsersList />
+              <Route path={routePaths.USERS + '/:userId'} component={UsersDetails}/>
             </div>
           </div>
         </div>
@@ -33,8 +35,7 @@ class Home extends PureComponent {
 
 function mapStateToProps(state, props) {
     return {
-        shouldGetUsers: !state.users.length,
-        shouldShowUserDetails: state.selected.userId !== null
+        shouldGetUsers: !state.users.length
     };
 }
 function mapDispatchToProps(dispatch) {
@@ -42,4 +43,4 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators({getUsers}, dispatch)
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

@@ -1,6 +1,7 @@
 const routePaths = {
   HOME: '/',
-  ABOUT: '/about'
+  ABOUT: '/about',
+  USERS: '/users'
 };
 
 export default routePaths;
