@@ -1,3 +1,4 @@
 export const actions = {
   'SET_USERS_TO_STORE': 'SET_USERS_TO_STORE',
+  'GET_USERS_FROM_API': 'GET_USERS_FROM_API'
 }

@@ -1,7 +1,13 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {getUsers} from 'actions/home/usersActions';
 
-export default class Home extends PureComponent {
-
+class Home extends PureComponent {
+  componentDidMount() {
+    this.props.actions.getUsers();
+  }
+  
   render() {
     console.log('Home', this.props);
     return (
@@ -15,3 +21,15 @@ export default class Home extends PureComponent {
     );
   }
 }
+
+function mapStateToProps(state, props) {
+    return {
+        users: state.users
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators({getUsers}, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -6,3 +6,9 @@ export const setUsersToStore = (users) => {
       users
   };
 }
+
+export const getUsers = () => {
+  return {
+      type: actions.GET_USERS_FROM_API,
+  };
+}
