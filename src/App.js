@@ -5,7 +5,7 @@ import About from './pages/about/components/About';
 import Footer from './components/Footer';
 import { Route } from 'react-router-dom';
 import routePaths from 'constans/routePaths';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import routePaths from 'constans/routePaths';
-import './Header.css';
+import './Header.scss';
 
 export default class Header extends Component {
   isActive(clicked, current) {

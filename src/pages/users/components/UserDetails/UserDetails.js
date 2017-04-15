@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import '../../Users.css'
 
 class UsersDetails extends PureComponent {
 

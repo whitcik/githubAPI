@@ -6,7 +6,7 @@ import UsersList from './UsersList/UsersList';
 import UsersDetails from './UserDetails/UserDetails';
 import { Route } from 'react-router-dom';
 import routePaths from 'constans/routePaths';
-import '../Users.css';
+import '../Users.scss';
 
 class Users extends PureComponent {
   componentDidMount() {
