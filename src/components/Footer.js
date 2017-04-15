@@ -7,7 +7,9 @@ export default class Footer extends PureComponent {
     return (
       <footer className="footer">
         <div className='container'>
-          &copy; 2016 Company, Inc.
+          <div className="contain">
+            &copy; 2017 Piotr Białek
+          </div>
         </div>
       </footer>
     );

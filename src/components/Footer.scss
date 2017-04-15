@@ -1,6 +1,11 @@
-.footer .container{
-  background-color: #222;
-  color: #fff;
-  line-height: 30px;
-  border-radius: 4px;
+.footer{
+  position: relative;
+  z-index: 10;
+  .contain{
+    background-color: #222;
+    color: #fff;
+    line-height: 30px;
+    border-radius: 4px;
+    padding: 0px 15px;
+}
 }
