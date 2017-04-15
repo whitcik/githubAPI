@@ -6,20 +6,25 @@ class UsersDetails extends PureComponent {
 
   render() {
     console.log('UsersDetails', this.props);
-    const { user } = this.props;
-    if(!user){
-      return null;
+    const { user, match, shouldntRender } = this.props;
+
+    if(shouldntRender) {
+      return false;
     }
+
     return (
       <div className="users-details well well-sm height-100p pull-right">
         <div className="thumbnail height-100p overflow-auto">
-          <img src={user.avatar_url} alt={user.login} />
-          <div className="caption">
-            <h3>{user.login}</h3>
-            <p>
-              <a target="_blank" href={user.html_url} className="btn btn-primary">GitHub</a>
-            </p>
-          </div>
+          {!user && <h3>Not found {match.params.userId}</h3>}
+          {user && <div>
+            <img src={user.avatar_url} alt={user.login} />
+            <div className="caption">
+              <h3>{user.login}</h3>
+              <p>
+                <a target="_blank" href={user.html_url} className="btn btn-primary">GitHub</a>
+              </p>
+            </div>
+          </div>}
         </div>
       </div>
     );
@@ -29,11 +34,12 @@ class UsersDetails extends PureComponent {
 function mapStateToProps(state, props) {
   const { users } = state;
   const selectedUserLogin = props.match.params.userId;
-
   const index = _.findIndex(users, user => user.login === selectedUserLogin);
 
   return {
-      user: state.users[index]
+    user: state.users[index],
+    shouldntRender: !state.users.length
+
   };
 }
 
