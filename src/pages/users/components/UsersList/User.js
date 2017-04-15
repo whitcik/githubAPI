@@ -4,7 +4,7 @@ import routePaths from 'constans/routePaths';
 
 const User = (props) => {
   return (
-    <ListGroupItem onClick={() => props.push(routePaths.USERS  + '/' + props.login)}>
+    <ListGroupItem active={props.isActive} onClick={() => props.push(routePaths.USERS  + '/' + props.login)}>
         {props.login}
     </ListGroupItem>
   );

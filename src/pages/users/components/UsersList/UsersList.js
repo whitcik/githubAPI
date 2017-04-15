@@ -9,7 +9,7 @@ import User from './User';
 
 class UsersList extends PureComponent {
   
-  generateUsers (){
+  generateUsers(){
     const { users } = this.props;
     
     return _.map(
@@ -17,6 +17,7 @@ class UsersList extends PureComponent {
       user => <User
                 push={this.props.actions.push}
                 key={user.id}
+                isActive={this.props.activeLogin === user.login}
                 {...user} />
     );
   }
@@ -36,15 +37,17 @@ class UsersList extends PureComponent {
 }
 
 function mapStateToProps(state, props) {
-    return {
-        users: state.users
-    };
+  const { pathname } = state.routing.location;
+  return {
+      users: state.users,
+      activeLogin: _.replace(pathname, '/users/', '')
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators({ selectUser, push }, dispatch)
-    }
+  return {
+      actions: bindActionCreators({ selectUser, push }, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);

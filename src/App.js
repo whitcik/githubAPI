@@ -4,7 +4,7 @@ import Users from './pages/users/components/Users';
 import About from './pages/about/components/About';
 import Home from './pages/home/components/Home';
 import Footer from './components/Footer';
-import { Route } from 'react-router-dom';
+import { Route } from 'react-router';
 import routePaths from 'constans/routePaths';
 import './App.scss';
 

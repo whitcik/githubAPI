@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { getUsers } from 'actions/users/usersActions';
 import UsersList from './UsersList/UsersList';
 import UsersDetails from './UserDetails/UserDetails';
-import { Route } from 'react-router-dom';
+import { Route } from 'react-router';
 import routePaths from 'constans/routePaths';
 import '../Users.scss';
 
