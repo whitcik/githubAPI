@@ -7,14 +7,29 @@ import { push } from 'react-router-redux'
 import { selectUser } from 'actions/usersActions';
 import User from './User';
 import Loader from 'react-loader';
+import SearchUserInput from './SearchUserInput';
 
 class UsersList extends PureComponent {
   
-  generateUsers(){
-    const { users } = this.props;
+  constructor() {
+    super();
+
+    this.state = {
+      searchText: ''
+    }
+  }
+
+  handleInputChange = (e) => {
+    
+    this.setState({
+      searchText: e.target.value
+    });
+  }
+
+  generateUsers() {
     
     return _.map(
-      users,
+      this.filterUsers(),
       user => <User
                 push={this.props.actions.push}
                 key={user.id}
@@ -23,11 +38,33 @@ class UsersList extends PureComponent {
     );
   }
 
+  filterUsers() {
+    const { users } = this.props;
+    const { searchText } = this.state;
+
+    if(searchText === '') {
+      return users;
+    }
+
+    return _.filter(
+      users,
+      user => _.includes(user.login.toLowerCase(), searchText)
+    );
+  }
+
   render() {
     console.log('UsersList', this.props);
+    const header = (
+      <div>
+        <span>Users List</span>
+        <SearchUserInput placeholder="Search..."
+                         value={this.state.searchText}
+                         handleInputChange={this.handleInputChange} />
+      </div>
+    );
     return (
       <div className="users-list well well-sm height-100p pull-left">
-        <Panel header="User List" className="height-100p">
+        <Panel header={header} className="height-100p">
           <ListGroup fill>
             <Loader loaded={this.props.loaded} >
               {this.generateUsers()}

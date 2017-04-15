@@ -13,12 +13,14 @@ export function* getUsersFromApi() {
     yield put({ type: actions.SET_USERS_LOADER, state: false });
     yield put({ type: actions.SET_USERS_TO_STORE, users: users });
   } catch(e){
-    console.log(e);
-    yield put({ type: actions.SET_USERS_LOADER , state: false });
+    console.log(e.response);
+    const users = yield call(getUsersAJAX);
+    yield put({ type: actions.SET_USERS_LOADER, state: false });
+    yield put({ type: actions.SET_USERS_TO_STORE, users: users });
   }
 }
 
-function getUsersAJAX(firstUserId){
+function getUsersAJAX(firstUserId = 0){
   return axios.get('https://api.github.com/users?since=' + (firstUserId - 1))
                 .then((data) => data.data);
 };
