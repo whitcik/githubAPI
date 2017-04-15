@@ -6,12 +6,21 @@ class UsersDetails extends PureComponent {
 
   render() {
     console.log('UsersDetails', this.props);
-    if(!this.props.user){
+    const { user } = this.props;
+    if(!user){
       return null;
     }
     return (
       <div className="users-details well well-sm height-100p pull-right">
-        <h2>{this.props.user.login}</h2>
+        <div className="thumbnail height-100p overflow-auto">
+          <img src={user.avatar_url} alt={user.login} />
+          <div className="caption">
+            <h3>{user.login}</h3>
+            <p>
+              <a target="_blank" href={user.html_url} className="btn btn-primary">GitHub</a>
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
