@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getUsers } from 'actions/users/usersActions';
+import { getUsers } from 'actions/usersActions';
 import UsersList from './UsersList/UsersList';
 import UsersDetails from './UserDetails/UserDetails';
 import { Route } from 'react-router';

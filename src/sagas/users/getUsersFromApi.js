@@ -5,13 +5,16 @@ import axios from 'axios';
 
 export function* getUsersFromApi() {
   try{
+    yield put({ type: actions.SET_USERS_LOADER, state: true });
     const selectedUserName = yield select(getSelectedUserName);
     const selectedUserId = selectedUserName.length ? yield call(getSelectedUserId, selectedUserName) : 1;
 
     const users = yield call(getUsersAJAX, selectedUserId);
+    yield put({ type: actions.SET_USERS_LOADER, state: false });
     yield put({ type: actions.SET_USERS_TO_STORE, users: users });
   } catch(e){
     console.log(e);
+    yield put({ type: actions.SET_USERS_LOADER , state: false });
   }
 }
 

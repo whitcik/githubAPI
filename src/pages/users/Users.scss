@@ -6,6 +6,7 @@
 }
 .users-list .list-group,
 .users-details .list-group  {
+  position: relative;
   height: calc(100% - 41px);
   overflow: auto;
 }

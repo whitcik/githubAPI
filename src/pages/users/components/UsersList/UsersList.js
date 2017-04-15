@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Panel, ListGroup } from 'react-bootstrap';
 import { push } from 'react-router-redux'
-import { selectUser } from 'actions/users/usersActions';
+import { selectUser } from 'actions/usersActions';
 import User from './User';
+import Loader from 'react-loader';
 
 class UsersList extends PureComponent {
   
@@ -23,12 +24,14 @@ class UsersList extends PureComponent {
   }
 
   render() {
-    console.log('Users');
+    console.log('UsersList', this.props);
     return (
       <div className="users-list well well-sm height-100p pull-left">
         <Panel header="User List" className="height-100p">
           <ListGroup fill>
-            {this.generateUsers()}
+            <Loader loaded={this.props.loaded} >
+              {this.generateUsers()}
+            </Loader>
           </ListGroup>
         </Panel>
       </div>
@@ -40,7 +43,8 @@ function mapStateToProps(state, props) {
   const { pathname } = state.routing.location;
   return {
       users: state.users,
-      activeLogin: _.replace(pathname, '/users/', '')
+      activeLogin: _.replace(pathname, '/users/', ''),
+      loaded: !state.loaders.isUsersLoader
   };
 }
 

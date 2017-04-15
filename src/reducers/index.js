@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import usersReducer from './users/usersReducer';
-import selectedReducer from './users/selectedReducer'
+import loaderReducer from './users/loaderReducer'
 
 const rootReducer = combineReducers({
     users: usersReducer,
     routing: routerReducer,
-    selected: selectedReducer
+    loaders: loaderReducer
 });
 export default rootReducer;
